@@ -26,7 +26,7 @@ public class UserEntity {
     @Column(name = "credential_no_expired", nullable = false)
     private boolean credentialNoExpired;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleEntity> roleSet = new HashSet<>();
 

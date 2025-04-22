@@ -1,6 +1,7 @@
 package com.soydz.util;
 
 import com.soydz.persistence.entity.MovieEntity;
+import com.soydz.presentation.dto.UserRequestDTO;
 
 import java.util.Collection;
 
@@ -19,5 +20,12 @@ public class ValidationUtils {
                 isNullOrBlank(movie.getTitle()) ||
                 isNullOrBlank(movie.getOriginalTitle()) ||
                 isNullOrBlank(movie.getOverview());
+    }
+
+    public static boolean isInvalidCreateUserData(UserRequestDTO userRequestDTO) {
+        return isNullOrBlank(userRequestDTO.username()) ||
+                isNullOrBlank(userRequestDTO.email()) ||
+                isNullOrBlank(userRequestDTO.password()) ||
+                isNullOrEmpty(userRequestDTO.roleSet());
     }
 }
