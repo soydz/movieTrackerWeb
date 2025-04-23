@@ -14,4 +14,20 @@ public record UserResponseDTO(
     public static UserResponseDTO fromEntity(UserEntity userEntity) {
         return new UserResponseDTO(userEntity.getId(), userEntity.getUsername(), userEntity.getEmail(), userEntity.getRoleSet());
     }
+
+    public static UserEntity toEntity(UserResponseDTO userResponseDTO) {
+        UserEntity userEntity = new UserEntity();
+
+        userEntity.setId(userResponseDTO.id);
+        userEntity.setUsername(userResponseDTO.username);
+        userEntity.setEmail(userResponseDTO.email);
+        userEntity.setRoleSet(userResponseDTO.roleSet);
+
+        userEntity.setEnabled(true);
+        userEntity.setCredentialNoExpired(true);
+        userEntity.setAccountNoLocked(true);
+        userEntity.setCredentialNoExpired(true);
+
+        return userEntity;
+    }
 }

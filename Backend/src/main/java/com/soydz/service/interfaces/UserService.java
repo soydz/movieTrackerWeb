@@ -17,4 +17,6 @@ public interface UserService {
     Optional<UserResponseDTO> getById(Long id);
 
     void deleteById(Long id);
+
+    boolean existsById(Long id);
 }
