@@ -45,7 +45,7 @@ public class UserMovieServiceImpl implements UserMovieService {
         }
 
         if (!userService.existsById(userMovieRequestDTO.user())) {
-            throw new IllegalArgumentException("User not found");
+            throw new UsernameNotFoundException("User not found");
         }
 
         if (this.existByUserMovie(userMovieRequestDTO.user(), userMovieRequestDTO.movie().id())) {
