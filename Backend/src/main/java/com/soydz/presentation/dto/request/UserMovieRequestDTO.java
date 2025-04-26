@@ -1,8 +1,9 @@
-package com.soydz.presentation.dto;
+package com.soydz.presentation.dto.request;
 
 import com.soydz.persistence.entity.MovieEntity;
 import com.soydz.persistence.entity.UserEntity;
 import com.soydz.persistence.entity.UserMovieEntity;
+import com.soydz.presentation.dto.MovieDTO;
 
 import java.time.LocalDate;
 

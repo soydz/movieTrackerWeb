@@ -1,8 +1,8 @@
 package com.soydz.service.interfaces;
 
-import com.soydz.presentation.dto.UserMovieResponseDetailsDTO;
-import com.soydz.presentation.dto.UserMovieRequestDTO;
-import com.soydz.presentation.dto.UserMovieResponseDTO;
+import com.soydz.presentation.dto.response.UserMovieResponseDetailsDTO;
+import com.soydz.presentation.dto.request.UserMovieRequestDTO;
+import com.soydz.presentation.dto.response.UserMovieResponseDTO;
 
 import java.util.List;
 import java.util.Optional;

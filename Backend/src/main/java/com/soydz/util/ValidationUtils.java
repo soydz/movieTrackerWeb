@@ -1,8 +1,8 @@
 package com.soydz.util;
 
 import com.soydz.persistence.entity.MovieEntity;
-import com.soydz.presentation.dto.UserRequestDTO;
-import com.soydz.presentation.dto.UserMovieRequestDTO;
+import com.soydz.presentation.dto.request.UserRequestDTO;
+import com.soydz.presentation.dto.request.UserMovieRequestDTO;
 
 import java.util.Collection;
 

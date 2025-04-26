@@ -1,7 +1,7 @@
 package com.soydz.presentation.controller;
 
-import com.soydz.presentation.dto.UserRequestDTO;
-import com.soydz.presentation.dto.UserResponseDTO;
+import com.soydz.presentation.dto.request.UserRequestDTO;
+import com.soydz.presentation.dto.response.UserResponseDTO;
 import com.soydz.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.soydz.presentation.dto;
+package com.soydz.presentation.dto.response;
 
 import com.soydz.persistence.entity.UserMovieEntity;
 

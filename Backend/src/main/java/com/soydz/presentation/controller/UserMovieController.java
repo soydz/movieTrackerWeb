@@ -1,8 +1,8 @@
 package com.soydz.presentation.controller;
 
-import com.soydz.presentation.dto.UserMovieResponseDetailsDTO;
-import com.soydz.presentation.dto.UserMovieRequestDTO;
-import com.soydz.presentation.dto.UserMovieResponseDTO;
+import com.soydz.presentation.dto.response.UserMovieResponseDetailsDTO;
+import com.soydz.presentation.dto.request.UserMovieRequestDTO;
+import com.soydz.presentation.dto.response.UserMovieResponseDTO;
 import com.soydz.service.interfaces.UserMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
