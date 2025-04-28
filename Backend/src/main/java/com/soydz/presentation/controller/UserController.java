@@ -1,9 +1,7 @@
 package com.soydz.presentation.controller;
 
-import com.soydz.presentation.dto.request.UserRequestDTO;
 import com.soydz.presentation.dto.response.UserResponseDTO;
 import com.soydz.service.interfaces.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +12,11 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/findAll")
     public ResponseEntity<List<UserResponseDTO>> getAll() {

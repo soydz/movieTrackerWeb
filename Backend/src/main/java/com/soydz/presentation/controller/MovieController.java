@@ -3,7 +3,6 @@ package com.soydz.presentation.controller;
 import com.soydz.persistence.entity.MovieEntity;
 import com.soydz.presentation.dto.MovieDTO;
 import com.soydz.service.interfaces.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,11 @@ import java.util.List;
 @RequestMapping("/api/movies")
 public class MovieController {
 
-    @Autowired
-    private MovieService movieService;
+    private final MovieService movieService;
+
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
 
     @PostMapping("/save")
     public ResponseEntity<URI> save(@RequestBody MovieDTO movieDTO) throws URISyntaxException {

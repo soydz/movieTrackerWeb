@@ -14,7 +14,6 @@ import com.soydz.service.interfaces.MovieService;
 import com.soydz.service.interfaces.UserMovieService;
 import com.soydz.service.interfaces.UserService;
 import com.soydz.util.ValidationUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -25,14 +24,15 @@ import java.util.Optional;
 @Service
 public class UserMovieServiceImpl implements UserMovieService {
 
-    @Autowired
-    private UserMovieRepository userMovieRepository;
+    private final UserMovieRepository userMovieRepository;
+    private final UserService userService;
+    private final MovieService movieService;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private MovieService movieService;
+    public UserMovieServiceImpl(UserMovieRepository userMovieRepository, UserService userService, MovieService movieService) {
+        this.userMovieRepository = userMovieRepository;
+        this.userService = userService;
+        this.movieService = movieService;
+    }
 
     @Override
     public UserMovieResponseDTO save(UserMovieRequestDTO userMovieRequestDTO) {

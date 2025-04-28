@@ -4,7 +4,6 @@ import com.soydz.persistence.entity.UserEntity;
 import com.soydz.presentation.dto.request.UserRequestDTO;
 import com.soydz.presentation.dto.response.AuthResponseDTO;
 import com.soydz.util.JwtUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,14 +22,15 @@ import java.util.List;
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserServiceImpl userService;
+    private final UserServiceImpl userService;
+    private final JwtUtils jwtUtils;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private JwtUtils jwtUtils;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserDetailServiceImpl(UserServiceImpl userService, JwtUtils jwtUtils, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.jwtUtils = jwtUtils;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

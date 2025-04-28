@@ -5,7 +5,6 @@ import com.soydz.persistence.repository.MovieRepository;
 import com.soydz.presentation.dto.MovieDTO;
 import com.soydz.service.interfaces.MovieService;
 import com.soydz.util.ValidationUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +13,11 @@ import java.util.Optional;
 @Service
 public class MovieServiceImpl implements MovieService {
 
-    @Autowired
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
+
+    public MovieServiceImpl(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
 
     @Override
     public MovieEntity save(MovieDTO movieDTO) {

@@ -4,7 +4,6 @@ import com.soydz.presentation.dto.response.UserMovieResponseDetailsDTO;
 import com.soydz.presentation.dto.request.UserMovieRequestDTO;
 import com.soydz.presentation.dto.response.UserMovieResponseDTO;
 import com.soydz.service.interfaces.UserMovieService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +14,11 @@ import java.util.List;
 @RequestMapping("/api/user-movie")
 public class UserMovieController {
 
-    @Autowired
-    private UserMovieService userMovieService;
+    private final UserMovieService userMovieService;
+
+    public UserMovieController(UserMovieService userMovieService) {
+        this.userMovieService = userMovieService;
+    }
 
     @PostMapping("/save")
     public ResponseEntity<UserMovieResponseDTO> save(@RequestBody UserMovieRequestDTO userMovieRequestDTO) {
