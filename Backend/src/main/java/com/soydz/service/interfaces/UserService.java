@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserService {
     Optional<UserEntity> findUserEntityByUsername(String username);
 
-    UserResponseDTO save(UserRequestDTO user);
+    UserEntity save(UserRequestDTO user);
 
     List<UserResponseDTO> getAll();
 

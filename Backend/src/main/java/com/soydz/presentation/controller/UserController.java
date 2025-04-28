@@ -17,11 +17,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/save")
-    public ResponseEntity<UserResponseDTO> save(@RequestBody UserRequestDTO userRequestDTO) {
-        return new ResponseEntity<>(userService.save(userRequestDTO), HttpStatus.CREATED);
-    }
-
     @GetMapping("/findAll")
     public ResponseEntity<List<UserResponseDTO>> getAll() {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);

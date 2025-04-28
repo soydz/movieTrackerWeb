@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserResponseDTO save(UserRequestDTO userRequestDTO) {
+    public UserEntity save(UserRequestDTO userRequestDTO) {
         if (ValidationUtils.isInvalidCreateUserData(userRequestDTO)) {
             throw new IllegalArgumentException("Invalid user data: username, email, password and roles must not be null or empty");
         }
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
         UserEntity userEntity = UserRequestDTO.toEntity(userRequestDTO, encryptedPassword, roleEntitySet);
 
-        return UserResponseDTO.fromEntity(userRepository.save(userEntity));
+        return userRepository.save(userEntity);
     }
 
     @Override
