@@ -3,17 +3,18 @@ package com.soydz.service.impl;
 import com.soydz.persistence.entity.UserEntity;
 import com.soydz.presentation.dto.request.UserRequestDTO;
 import com.soydz.presentation.dto.response.AuthResponseDTO;
-import com.soydz.presentation.dto.response.UserResponseDTO;
-import com.soydz.service.interfaces.UserService;
 import com.soydz.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +28,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
     private JwtUtils jwtUtils;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -82,6 +86,38 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
         return new AuthResponseDTO(
                 userCreated.getUsername(), "User created successfully", accessToken, true
+        );
+    }
+
+    public Authentication authentication(String username, String password) {
+        UserDetails userDetails = this.loadUserByUsername(username);
+
+        if(userDetails == null) {
+            throw new BadCredentialsException("Invalid username or password");
+        }
+
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+            throw new BadCredentialsException("Invalid username or password");
+        }
+
+        return new UsernamePasswordAuthenticationToken(username, userDetails.getPassword(), userDetails.getAuthorities());
+    }
+
+    public AuthResponseDTO loginUser(UserRequestDTO userRequestDTO) {
+        String username = userRequestDTO.username();
+        String password = userRequestDTO.password();
+
+        Authentication authentication = this.authentication(username, password);
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String accessToken = jwtUtils.createToken(authentication);
+
+        return new AuthResponseDTO(
+                username,
+                "User logged successfuly",
+                accessToken,
+                true
         );
     }
 }

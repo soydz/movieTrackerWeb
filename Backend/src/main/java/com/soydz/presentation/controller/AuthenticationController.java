@@ -24,4 +24,9 @@ public class AuthenticationController {
     public ResponseEntity<AuthResponseDTO> register(@RequestBody UserRequestDTO userRequestDTO) {
         return new ResponseEntity<>(this.userDetailService.createUser(userRequestDTO), HttpStatus.CREATED);
     }
+
+    @PostMapping("/log-in")
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody UserRequestDTO userRequestDTO) {
+        return new ResponseEntity<>(this.userDetailService.loginUser(userRequestDTO), HttpStatus.OK);
+    }
 }
