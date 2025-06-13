@@ -4,13 +4,13 @@ EXPOSE 8080
 
 WORKDIR /app
 
-COPY ./pom.xml .
+COPY pom.xml .
 
 # descargamos las dependencias
 RUN mvn dependency:go-offline
 
 # codigo fuente
-COPY ./src ./src
+COPY src ./src
 
 # contruimos la app
 RUN mvn clean install -DskipTests
