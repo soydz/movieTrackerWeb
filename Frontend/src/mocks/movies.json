@@ -1,0 +1,385 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/bfh9Z3Ghz4FOJAfLOAhmc3ccnHU.jpg",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 671,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Philosopher's Stone",
+      "overview": "Harry Potter es un huérfano que vive con sus desagradables tíos, los Dursley, y su repelente primo Dudley. Se acerca su undécimo cumpleaños y tiene pocas esperanzas de recibir algún regalo, ya que nunca nadie se acuerda de él. Sin embargo, pocos días antes de su cumpleaños, una serie de misteriosas cartas dirigidas a él y escritas con una estridente tinta verde rompen la monotonía de su vida: Harry es un mago y sus padres también lo eran.",
+      "popularity": 32.0632,
+      "poster_path": "/3MKK7vAJLtSkBTABMTjxf6TOCo3.jpg",
+      "release_date": "2001-11-16",
+      "title": "Harry Potter y la piedra filosofal",
+      "video": false,
+      "vote_average": 7.901,
+      "vote_count": 28273
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/yHzyPJrVqlTySQ9mc379yxrLBYQ.jpg",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 672,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Chamber of Secrets",
+      "overview": "Harry regresa a su segundo año a Hogwarts, pero descubre que cosas malas ocurren debido a que un sitio llamado la Cámara de los Secretos ha sido abierto por el heredero de Slytherin y hará que los hijos de muggles, los impuros, aparezcan petrificados misteriosamente por un animal monstruoso.",
+      "popularity": 26.5635,
+      "poster_path": "/3nvGqfZE3yrsqehpF107byUdUSq.jpg",
+      "release_date": "2002-11-13",
+      "title": "Harry Potter y la cámara secreta",
+      "video": false,
+      "vote_average": 7.707,
+      "vote_count": 22576
+    },
+    {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [],
+      "id": 1339252,
+      "original_language": "en",
+      "original_title": "Harry",
+      "overview": "Leo realizes that there is no place like home.",
+      "popularity": 0.3126,
+      "poster_path": null,
+      "release_date": "2024-01-03",
+      "title": "Harry",
+      "video": false,
+      "vote_average": 5.875,
+      "vote_count": 56
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/5rrGVmRUuCKVbqUu41XIWTXJmNA.jpg",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 674,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Goblet of Fire",
+      "overview": "En el cuarto año en Hogwarts, Harry se enfrenta al mayor de los desafíos y peligros de la saga. Cuando es elegido bajo misteriosas circunstancias como el competidor que representará a Hogwarts en el Torneo Triwizard, Harry deberá competir contra los mejores jóvenes magos de toda Europa. Pero mientras se prepara, aparecen pruebas que manifiestan que Lord Voldemort ha regresado. Antes de darse cuenta, Harry no solo estará luchando por el campeonato sino también por su vida",
+      "popularity": 25.0587,
+      "poster_path": "/6Cn5Lx9kqhXzTNV5QXwZ3RW5pBg.jpg",
+      "release_date": "2005-11-16",
+      "title": "Harry Potter y el cáliz de fuego",
+      "video": false,
+      "vote_average": 7.8,
+      "vote_count": 21216
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/82a7AGF081PzFfoM8GAVGMvZNYK.jpg",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 675,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Order of the Phoenix",
+      "overview": "Harry Potter regresa por quinto año a Hogwarts aún sacudido por la tragedia ocurrida en el Torneo de los Tres Magos. Debido a que el Ministro de la Magia niega el regreso de Lord Voldemort, Harry se convierte en el centro de atención de la comunidad mágica. Mientras lucha con sus problemas en el colegio, incluyendo a la nueva profesora Dolores Umbridge, intentará aprender más sobre la misteriosa Orden del Fénix.",
+      "popularity": 21.7474,
+      "poster_path": "/xxXiM2Ij7plbzibKWW9BfDk23aI.jpg",
+      "release_date": "2007-07-08",
+      "title": "Harry Potter y la Orden del Fénix",
+      "video": false,
+      "vote_average": 7.674,
+      "vote_count": 19923
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/e2Ppz6IQcukpqyYYJsRkWcsGXvT.jpg",
+      "genre_ids": [
+        35
+      ],
+      "id": 10152,
+      "original_language": "en",
+      "original_title": "Dumb and Dumberer: When Harry Met Lloyd",
+      "overview": "Desde hace tres años, Lloyd Christmas está considerado como el chico más estúpido del instituto. Eso cambia repentinamente el primer día del último curso, cuando conoce a Harry Dunne. Se trata de un muchacho igual de descerebrado que él que se adentra por primera vez en el mundo real después de llevar 17 años en casa con su madre como maestra. Enseguida se convertirán en amigos del alma. Pero otros intentarán aprovecharse de la ingenuidad y de la torpeza de ambos.",
+      "popularity": 2.9942,
+      "poster_path": "/ukw6GRab0yuvIwD0TMkCUXmLQgB.jpg",
+      "release_date": "2003-04-14",
+      "title": "Dos tontos muy tontos: cuando Harry encontró a Lloyd",
+      "video": false,
+      "vote_average": 4.1,
+      "vote_count": 851
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/vbk5CfaAHOjQPSAcYm6AoRRz2Af.jpg",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 673,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Prisoner of Azkaban",
+      "overview": "Harry está deseando que termine el verano para comenzar un nuevo curso en Hogwarts, y abandonar lo antes posible la casa de sus despreciables tíos, los Dursley. Lo que desconoce Harry es que va a tener que abandonar Privet Drive antes de tiempo e inesperadamente después de convertir a su tía Marge en un globo gigante. Un autobús noctámbulo, y encantado por supuesto, le llevará a la taberna El Caldero Chorreante, donde le espera nada menos que Cornelius Fudge, el Ministro de Magia.",
+      "popularity": 22.9927,
+      "poster_path": "/wF9aoo4YZmpKP4bZPSy4Zwwek6G.jpg",
+      "release_date": "2004-05-31",
+      "title": "Harry Potter y el prisionero de Azkaban",
+      "video": false,
+      "vote_average": 8.011,
+      "vote_count": 22153
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/AqLcLsGGTzAjm3pCCq0CZCQrp6m.jpg",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 12444,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Deathly Hallows: Part 1",
+      "overview": "Una tarea casi imposible cae sobre los hombros de Harry: deberá encontrar y destruir los horrocruxes restantes para dar fin al reinado de Lord Voldemort. En el episodio final de la saga, el hechicero de 17 años parte junto con sus amigos Hermione Granger y Ron Weasley en un peligroso viaje por Inglaterra para encontrar los objetos que contienen los fragmentos del alma del Señor Tenebroso, los cuales garantizan su longevidad. Pero el camino no será fácil pues el lado oscuro adquiere más poder con cada minuto que pasa y las lealtades serán puestas a prueba. Harry deberá usar todos los conocimientos que gracias a Dumbledore ha adquirido sobre su enemigo para poder encontrar la forma de sobrevivir a esta última aventura.",
+      "popularity": 19.9368,
+      "poster_path": "/w6wsYKdXERaXRdByPsI2O9rn20b.jpg",
+      "release_date": "2010-11-17",
+      "title": "Harry Potter y las Reliquias de la Muerte - Parte 1",
+      "video": false,
+      "vote_average": 7.741,
+      "vote_count": 19525
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/urDWNffjwmNi5IQaezw9GwqkUXa.jpg",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "id": 767,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Half-Blood Prince",
+      "overview": "En medio de los desastres que azotan a Inglaterra, Harry y sus compañeros vuelven a Hogwarts para cursar su sexto año de estudios; y aunque las medidas de seguridad han convertido al colegio en una fortaleza, algunos estudiantes son víctimas de ataques inexplicables. Harry sospecha que Draco Malfoy es el responsable de los mismos y decide averiguar la razón. Mientras tanto, Albus Dumbledore y el protagonista exploran el pasado de Lord Voldemort mediante recuerdos que el director ha recolectado. Con esto, Dumbledore planea preparar al muchacho para el día de la batalla final.",
+      "popularity": 20.9941,
+      "poster_path": "/nSb3nNiL6pOEDK34T0U6RKTGzlJ.jpg",
+      "release_date": "2009-07-15",
+      "title": "Harry Potter y el misterio del príncipe",
+      "video": false,
+      "vote_average": 7.683,
+      "vote_count": 19904
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/n5A7brJCjejceZmHyujwUTVgQNC.jpg",
+      "genre_ids": [
+        14,
+        12
+      ],
+      "id": 12445,
+      "original_language": "en",
+      "original_title": "Harry Potter and the Deathly Hallows: Part 2",
+      "overview": "La segunda parte de la batalla final entre las fuerzas del bien y el mal. El juego nunca ha sido tan peligroso y nadie está a salvo. Se acerca el momento de la confrontación final entre Harry Potter y Lord Voldemort. Todo termina aquí…",
+      "popularity": 20.3025,
+      "poster_path": "/aM1TuUiPtV8OAZyu61CTdy9Ymtk.jpg",
+      "release_date": "2011-07-12",
+      "title": "Harry Potter y las Reliquias de la Muerte - Parte 2",
+      "video": false,
+      "vote_average": 8.086,
+      "vote_count": 21060
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/mjCYpJXCBYDZgMr1U1KZcFgFDfC.jpg",
+      "genre_ids": [
+        99
+      ],
+      "id": 482408,
+      "original_language": "en",
+      "original_title": "Harry Potter: A History Of Magic",
+      "overview": "Un viaje emocionante a través de leyendas, creencias y folclore, esta película va detrás de escena de la Biblioteca Británica mientras buscan contar esa historia a través de objetos en su colección, en una nueva y ambiciosa exposición: Harry Potter: Una historia de magia. JK Rowling, que está donando manuscritos, dibujos y borradores inéditos de sus archivos privados (que residirán junto a los tesoros de la Biblioteca Británica, así como borradores y dibujos originales de Jim Kay) habla sobre algunos de los objetos personales que ha donado para la exposición. y da una nueva visión de su escritura, mirando algunos de los objetos de la exposición que dispararon su imaginación.",
+      "popularity": 2.0104,
+      "poster_path": "/kkzDng2S8w2hT1gap7MdMdx7uUE.jpg",
+      "release_date": "2017-10-28",
+      "title": "Harry Potter: una historia de magia",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 91
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/bDqchWjPhko0XvRBx4pErPMk0Hv.jpg",
+      "genre_ids": [
+        10749,
+        10751,
+        10770
+      ],
+      "id": 518527,
+      "original_language": "en",
+      "original_title": "Harry & Meghan: A Royal Romance",
+      "overview": "Cuando el príncipe Harry visita Estados Unudos conoce a Meghan Markle, una famosa actriz norteamericana divorciada y con una carrera prometedora. Tras una primera cita secreta en un restaurante reservado en exclusiva para ellos, descubren que tienen mucha afinidad y conciertan otra cita. Los encuentros en secreto se suceden con frecuencia hasta que son sorprendidos por la prensa. La noticia del romance de la pareja tiene repercusión mundial inmediata.",
+      "popularity": 1.2383,
+      "poster_path": "/2ODzSaM8EKF28mGjNTH3ptb3BJu.jpg",
+      "release_date": "2018-05-13",
+      "title": "Meghan y Harry: Un Romance Real",
+      "video": false,
+      "vote_average": 6.9,
+      "vote_count": 209
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/8rft8A9nH43IReybFtYt21ezfMK.jpg",
+      "genre_ids": [
+        99
+      ],
+      "id": 899082,
+      "original_language": "en",
+      "original_title": "Harry Potter 20th Anniversary: Return to Hogwarts",
+      "overview": "Daniel Radcliffe, Rupert Grint y Emma Watson se unen al cineasta Chris Columbus y a otros miembros del reparto de las películas de Harry Potter para volver a Hogwarts por primera vez y celebrar el aniversario de la primera película de la saga.",
+      "popularity": 6.9063,
+      "poster_path": "/jAwbyTKDbw7iqYptPMSlPfFsbPU.jpg",
+      "release_date": "2022-01-01",
+      "title": "Harry Potter, 20º Aniversario: Regreso a Hogwarts",
+      "video": false,
+      "vote_average": 7.303,
+      "vote_count": 3412
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/nIWyiZD1fYXytFoLzcM5GWoTiE0.jpg",
+      "genre_ids": [
+        18
+      ],
+      "id": 91767,
+      "original_language": "en",
+      "original_title": "Harry & Son",
+      "overview": "Harry, un hombre viudo que trabaja en la construcción, está pasando malos momentos por motivos de salud. Cuando, de manera involuntaria, casi mata a un compañero, decide buscar un nuevo trabajo. Tiene un hijo adolescente, un tanto irresponsable, que no entiende el malhumor de su padre, sobre todo, cuando le aconseja que busque trabajo. Además, el chico sueña con ser escritor, pero sólo se lo confía a su amiga Katy.",
+      "popularity": 0.7947,
+      "poster_path": "/xJzFgZIfcCNRZHnONq9cayjYoN5.jpg",
+      "release_date": "1984-03-02",
+      "title": "Harry e hijo",
+      "video": false,
+      "vote_average": 5.808,
+      "vote_count": 65
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/mJjOZSaTTqG3an5MkkOX3x18lYX.jpg",
+      "genre_ids": [
+        28,
+        80,
+        53
+      ],
+      "id": 984,
+      "original_language": "en",
+      "original_title": "Dirty Harry",
+      "overview": "Harry Callahan es un duro policía que se ha criado en la calle. Sus compañeros le llaman Harry el Sucio por sus particulares métodos de lucha contra el crimen y porque siempre se encarga de los trabajos más desagradables. En San Francisco, un francotirador ha matado ya a dos personas. Harry será el encargado de resolver el caso.",
+      "popularity": 4.3024,
+      "poster_path": "/mDW2pmFSIy5ppQBCBjD4b0rFSXy.jpg",
+      "release_date": "1971-12-23",
+      "title": "Harry el sucio",
+      "video": false,
+      "vote_average": 7.443,
+      "vote_count": 2545
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/eAPj43jprYqhQvqzaP7B1LL7B0N.jpg",
+      "genre_ids": [
+        35,
+        18,
+        12
+      ],
+      "id": 42448,
+      "original_language": "en",
+      "original_title": "Harry and Tonto",
+      "overview": "Un profesor retirado viudo y su gato abandonan su apartamento de Manhattan y emprenden un viaje a través de los Estados Unidos. (FILMAFFINITY)",
+      "popularity": 0.7202,
+      "poster_path": "/2JIy2g5UoHBnmNnFpSU7oq5xdTG.jpg",
+      "release_date": "1974-08-12",
+      "title": "Harry y Tonto",
+      "video": false,
+      "vote_average": 7.091,
+      "vote_count": 88
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/h3EJkzZNvFf3W8JlFokx4MLRPdv.jpg",
+      "genre_ids": [
+        35,
+        18,
+        10749
+      ],
+      "id": 441906,
+      "original_language": "hi",
+      "original_title": "जब हैरी मेट सेजल",
+      "overview": "Harry y Sejal viajan por Europa. Harry, buscando el anillo de compromiso para Sejal, entiende lo que es el amor y las relaciones. Sejal se siente libre, segura y feliz con Harry. Vivirán todo tipo de experiencias juntos.",
+      "popularity": 1.2958,
+      "poster_path": "/yraJilUVLSd6BmQ4f1YtJGmcNkf.jpg",
+      "release_date": "2017-08-04",
+      "title": "Jab Harry Met Sejal",
+      "video": false,
+      "vote_average": 6.5,
+      "vote_count": 195
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/dbdegCWeD4iK5LXxSBjGdIRsVXS.jpg",
+      "genre_ids": [
+        35,
+        10749,
+        18
+      ],
+      "id": 639,
+      "original_language": "en",
+      "original_title": "When Harry Met Sally...",
+      "overview": "Harry Burns y Sally Albright se conocen fortuitamente cuando ella se ofrece para llevarle en su coche hasta la ciudad, entablan una conversación sobre la amistad entre personas de diferente sexo; la conversación acaba en discusión, pero entre ellos nace algo muy especial. Son un hombre y una mujer que se han pasado mucho tiempo intentando averiguar cómo seguir siendo amigos. Sin embargo, Harry tiene una firme creencia: que dos personas de sexo opuesto no pueden ser simplemente amigos, la relación siempre acaba en la cama o en el altar.",
+      "popularity": 5.0782,
+      "poster_path": "/dHUhjAPViRGTU9CFBt4JoANWHiK.jpg",
+      "release_date": "1989-07-12",
+      "title": "Cuando Harry encontró a Sally",
+      "video": false,
+      "vote_average": 7.404,
+      "vote_count": 4231
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/mgNMFGVUezUAgOPJ57N2toQ7d6z.jpg",
+      "genre_ids": [
+        18,
+        35,
+        9648
+      ],
+      "id": 47943,
+      "original_language": "fr",
+      "original_title": "Harry, un ami qui vous veut du bien",
+      "overview": "Las vacaciones de Michel y Claire prometen ser duras. Sus tres hijas pequeñas, alborotadas por el intenso calor, acaparan gran parte de su energía. Además, su casa de verano está en obras desde hace cinco años y es una fuente permanente de problemas. En estas circunstancias, no es de extrañar que la pareja tenga los nervios de punta. Sin previo aviso llega, como caído del cielo, Harry, un amigo dispuesto a todo con tal de lograr la felicidad de Michel.",
+      "popularity": 1.4246,
+      "poster_path": "/dZV9UTyHJ4LD4ntWudWyqBNhb8I.jpg",
+      "release_date": "2000-08-15",
+      "title": "Harry, un amigo que os quiere",
+      "video": false,
+      "vote_average": 6.812,
+      "vote_count": 266
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/vi7qqCaBJFhSGyYeqqQXlMRmjJk.jpg",
+      "genre_ids": [
+        99
+      ],
+      "id": 130612,
+      "original_language": "en",
+      "original_title": "Harry Dean Stanton: Partly Fiction",
+      "overview": "Aunque no seamos completamente conscientes de ello, Harry Dean Stanton forma parte del elenco estable de la cinefilia: Monte Hellman, Sam Peckinpah, John Huston, Ridley Scott, John Carpenter, Francis Ford Coppola, Wim Wenders y David Lynch son algunos de los directores que lo tuvieron a sus órdenes. Y sin embargo, hay un halo de misterio alrededor de su vida y sus ideas: poco se sabe de él, y casi nunca lo hemos escuchado hablar fuera de la ficción de sus películas. El documental de Sophie Huber es, en ese aspecto, revelador. Aun frente a su actitud reticente hacia ciertos temas –e incluso hacia la idea de un film sobre sí mismo–, Stanton parece permitir todo el acercamiento posible, como si se tratase de un viejo león en su hábitat natural. Ya sea entrevistado por su amigo David Lynch o hablando de su breve pero intensa relación con Rebecca de Mornay, que terminó cuando, en el set de Risky Business, ella se decidió por un joven Tom Cruise.",
+      "popularity": 0.4912,
+      "poster_path": "/xLH3mcp3OewTrJcTNALkT4jQVjW.jpg",
+      "release_date": "2013-09-11",
+      "title": "Harry Dean Stanton: Partly Fiction",
+      "video": false,
+      "vote_average": 6.6,
+      "vote_count": 41
+    }
+  ],
+  "total_pages": 23,
+  "total_results": 445
+}
