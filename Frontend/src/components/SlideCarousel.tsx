@@ -39,7 +39,7 @@ export const SlideCarousel = ({ movie }) => {
                                 <Flex direction="row" mt="2" justify="between">
                                     <Flex direction="column" justify="center">
                                         <Text>{movie.vote_average}</Text>
-                                        <ImdbIcon width="36px" height="36px" color="#F5C518" backgroundColor="" />
+                                        <ImdbIcon width="36px" height="36px" color="#F5C518"/>
                                     </Flex>
                                     <Flex direction="column" align="center" justify="center">
                                         <Text align="right">{movie.release_date}</Text>
