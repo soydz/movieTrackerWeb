@@ -1,22 +1,21 @@
 import { CardMovie } from "./CardMovie";
-import dataMovies from "../mocks/movies.json"
 import { Grid } from "@radix-ui/themes";
 
-export function ViewMovies() {
-    console.log(dataMovies.results)
+export const ViewMovies = ({ movies, user, seeMovies, setSeeMovies }) => {
     return (
         <Grid columns="4" gap="5" justify="center">
-            {dataMovies.results.map(movie => (
-                <CardMovie
-                    key={movie.id}
-                    title={movie.title}
-                    overview={movie.overview}
-                    release_date={movie.release_date}
-                    poster_path={movie.poster_path}
-                />
-            ))}
+            {
+                movies.length > 0 && movies.map(item => {
+                    return (
+                        <CardMovie
+                            key={item.id}
+                            movie={item}
+                            user={user}
+                            seeMovies={seeMovies}
+                            setSeeMovies={setSeeMovies}
+                        />
+                    )
+                })}
         </Grid>
     )
 }
-
-// export function CardMovie({title, original_title, overview, release_date, poster_path, genre_ids, original_language}) {

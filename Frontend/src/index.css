@@ -19,8 +19,20 @@ body {
     padding: 0;
     box-sizing: border-box;
     height: 100%;
+    background-color: red;
 }
 
 html {
     height: 100%;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }

@@ -1,4 +1,6 @@
-export function MovieIcon(props: SVGProps<SVGSVGElement>) {
+import type { SVGProps } from "react";
+
+export const MovieIcon = (props: SVGProps<SVGSVGElement>) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"

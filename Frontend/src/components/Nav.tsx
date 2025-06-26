@@ -1,40 +1,59 @@
 import { EyeOpenIcon, MagnifyingGlassIcon, PersonIcon } from "@radix-ui/react-icons";
-import { Container, Flex, TabNav, Text } from "@radix-ui/themes";
-import { MovieIcon } from "./MovieIcon";
+import { Box, Container, Flex, TabNav, Tabs, Text } from "@radix-ui/themes";
+import { MovieIcon } from "./icons/MovieIcon";
+import { Link } from "react-router-dom";
 
+export const Nav = ({ user }) => {
 
-export function Nav() {
-    return(
-        <Container style={{ backgroundColor: '#1f2937', }} height="100vh">
-            <TabNav.Root color="violet">
-                <Flex direction="column" gap="4" py="5">
-                    <TabNav.Link>
-                        <Flex align="center" gap="1" p="2">
-                            <MovieIcon width={'30'} height={'30'} color="#7D66D9"/>
-                            <Text size={'6'} color="violet">MovieTracker</Text>
-                        </Flex>
-                    </TabNav.Link>
-                    <TabNav.Link active>
-                        <Flex align="center" gap="1" p="2">
-                            <MagnifyingGlassIcon width={'20'} height={'20'}/>
-                            <Text size={'3'}> Buscar Películas</Text>
-                        </Flex>
-                        
-                    </TabNav.Link>
-                    <TabNav.Link>
-                        <Flex align="center" gap="1" p="2">
-                            <EyeOpenIcon width={'20'} height={'20'}/>
-                            <Text size={'3'}> Películas Vistas</Text>
-                        </Flex>
-                    </TabNav.Link>
-                    <TabNav.Link>
-                        <Flex align="center" gap="1" p="2">
-                            <PersonIcon width={'20'} height={'20'}/>
-                            <Text size={'3'}> Mi perfil</Text>
-                        </Flex>
-                    </TabNav.Link>
-                </Flex>
-            </TabNav.Root> 
-        </Container>
+    const logueado = user == null ? false : true;
+
+    return (
+        <Container style={{ borderRight: "1px solid gray" }} height="100vh">
+            <Tabs.Root>
+                <Tabs.List>
+                    <Flex direction="column" gap="4" py="5">
+                        <Tabs.Trigger value="MovieTracker">
+                            <Link to="/" style={{ textDecoration: "none", color: "inherit" }} >
+                                <Flex align="center" gap="1" p="2">
+                                    <MovieIcon width={'30'} height={'30'} color="var(--accent-9)" />
+                                    <Text size={'6'} style={{ color: "var(--accent-9)" }}>MovieTracker</Text>
+                                </Flex>
+                            </Link>
+                        </Tabs.Trigger>
+                        <Tabs.Trigger value="Buscar peliculas">
+                            <Link to="/buscar" style={{ textDecoration: "none", color: "inherit" }} >
+                                <Flex align="center" gap="1" p="2">
+                                    <MagnifyingGlassIcon width={'20'} height={'20'} />
+                                    <Text size={'3'}> Buscar películas</Text>
+                                </Flex>
+                            </Link>
+                        </Tabs.Trigger>
+                        {logueado &&
+                            <>
+                                <Tabs.Trigger value="Peliculas vistas" >
+                                    <Link to={`user/${user.username}/vistas`} style={{ textDecoration: "none", color: "inherit" }} >
+                                        <Box >
+                                            <Flex align="center" gap="1" p="2" width="100%">
+                                                <EyeOpenIcon width={'20'} height={'20'} />
+                                                <Text size={'3'}>Películas Vistas</Text>
+                                            </Flex>
+                                        </Box>
+                                    </Link>
+                                </Tabs.Trigger>
+
+                                <Tabs.Trigger value="Mi perfil">
+                                    <Link to={`/user/${user.username}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                        <Flex align="center" gap="1" p="2">
+                                            <PersonIcon width={'20'} height={'20'} />
+                                            <Text size={'3'}>Mi perfil</Text>
+                                        </Flex>
+                                    </Link>
+                                </Tabs.Trigger>
+                            </>
+                        }
+                    </Flex>
+                </Tabs.List>
+            </Tabs.Root>
+        </Container >
     )
 }
