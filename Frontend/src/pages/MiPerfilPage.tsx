@@ -1,6 +1,13 @@
 import { Card, Flex, Heading, Text } from "@radix-ui/themes"
+import type { User } from "../interfaces/user"
+import type { SeeMovie } from "../interfaces/movie"
 
-export const MiPerfilPage = ({ user, seeMovies }) => {
+interface MiPerfilPageProps {
+    user: User | null,
+    seeMovies: Array<SeeMovie>
+}
+
+export const MiPerfilPage = ({ user, seeMovies }: MiPerfilPageProps) => {
     return (
         <Flex align="center" justify="center" height="100%">
 

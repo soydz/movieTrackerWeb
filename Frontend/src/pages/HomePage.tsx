@@ -2,10 +2,11 @@ import { Box, Container, Flex, Heading, Text } from "@radix-ui/themes"
 import { useEffect, useState } from "react"
 import getMoviesDBPopular from "../services/getMoviesDBPopular"
 import { Carousel } from "../components/Carousel"
+import type { PopularMovies } from "../interfaces/movie"
 
 export const HomePage = () => {
 
-    const [popularMovies, setPopularMovies] = useState()
+    const [popularMovies, setPopularMovies] = useState<Array<PopularMovies>>([])
 
     useEffect(() => {
         const fecthPopularMovies = async () => {

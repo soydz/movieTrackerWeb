@@ -3,8 +3,9 @@ import { FormAuth } from "../components/FormAuth";
 import authService from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import type { Login } from "../interfaces/auth";
+import type { SetUser } from "../interfaces/user";
 
-export const AccederPage = ({ setUser }) => {
+export const AccederPage = ({ setUser }: SetUser) => {
 
     const navigate = useNavigate();
 
@@ -38,7 +39,7 @@ export const AccederPage = ({ setUser }) => {
 
     return (
         <Flex direction="column" justify="center" align="center" style={{ height: "calc(100vh - 270px)" }}>
-            <FormAuth type="login" onSubmit={handleSubmit} />
+            <FormAuth<Login> type="login" onSubmit={handleSubmit} />
         </Flex>
     )
 }

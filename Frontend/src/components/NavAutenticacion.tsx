@@ -1,11 +1,19 @@
 import { ExitIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { Avatar, Box, Flex, TabNav, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
+import type { User } from "../interfaces/user";
 
-export const NavAutenticacion = ({ user, setUser, isDarkMode, setIsDarkMode }) => {
+interface NavAutenticacionProps {
+    user: User | null,
+    setUser: React.Dispatch<React.SetStateAction<User | null>>,
+    isDarkMode: boolean,
+    setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const NavAutenticacion = ({ user, setUser, isDarkMode, setIsDarkMode }: NavAutenticacionProps) => {
 
     const logueado = user == null ? false : true;
-    const getInicial = user && user.username[0];
+    const getInicial = user ? user.username[0] : "";
 
     const handleClick = (e: string) => {
         if (e == "exit") {
@@ -48,7 +56,7 @@ export const NavAutenticacion = ({ user, setUser, isDarkMode, setIsDarkMode }) =
                         logueado &&
                         <>
                             <TabNav.Link asChild>
-                                <Link to={`/user/${user.username}`}>
+                                <Link to={`/user/${user ? user.username : ""}`}>
                                     <Avatar radius="large" fallback={getInicial} />
                                 </Link>
                             </TabNav.Link>

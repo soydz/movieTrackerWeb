@@ -14,12 +14,13 @@ import getMoviesUser from "./services/getMoviesUser";
 import type { User } from "./interfaces/user";
 
 import "@radix-ui/themes/styles.css";
+import type { SeeMovie } from "./interfaces/movie";
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
 
-  const [seeMovies, setSeeMovies] = useState([]);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [seeMovies, setSeeMovies] = useState<Array<SeeMovie>>([]);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   const fechtMoviesUser = async (storageUser: string) => {
     const storageUserObj = JSON.parse(storageUser)

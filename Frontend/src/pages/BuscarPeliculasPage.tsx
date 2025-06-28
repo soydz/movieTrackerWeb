@@ -4,17 +4,17 @@ import { ViewMovies } from "../components/ViewMovies";
 import { useEffect, useState } from "react";
 import getMoviesDB from "../services/getMoviesDB";
 import type { User } from "../interfaces/user";
-import type { SeeMovie } from "../interfaces/movie";
+import type { Movie, SeeMovie } from "../interfaces/movie";
 
 interface BuscarPeliculasPageProps {
-  user: User,
+  user: User | null,
   seeMovies: Array<SeeMovie>,
-  setSeeMovies: Array<SeeMovie>
+  setSeeMovies: React.Dispatch<React.SetStateAction<Array<SeeMovie>>>
 }
 
 export const BuscarPeliculasPage = ({ user, seeMovies, setSeeMovies }: BuscarPeliculasPageProps) => {
-  const [nameMovie, setNameMovie] = useState("");
-  const [movies, setMovies] = useState({});
+  const [nameMovie, setNameMovie] = useState<string>("");
+  const [movies, setMovies] = useState<Array<Movie>>([]);
 
   useEffect(() => {
     if (!nameMovie || nameMovie.length < 3) {
@@ -25,7 +25,7 @@ export const BuscarPeliculasPage = ({ user, seeMovies, setSeeMovies }: BuscarPel
       try {
         const response = await getMoviesDB(nameMovie);
         const data = await response.json();
-        setMovies(data.results);
+        setMovies(data.results ?? []);
 
       } catch (error: unknown) {
         if (error instanceof Error) {

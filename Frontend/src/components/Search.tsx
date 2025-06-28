@@ -2,7 +2,12 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Box, Flex, Section, TextField } from "@radix-ui/themes";
 import type { ChangeEvent } from "react";
 
-export const Search = ({ nameMovie, setNameMovie }) => {
+interface SearchProps {
+    nameMovie: string,
+    setNameMovie: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const Search = ({ nameMovie, setNameMovie }: SearchProps) => {
 
     const handlenChange = (e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target;

@@ -5,7 +5,7 @@ export interface Movie {
     overview: string,
     releaseDate: string,
     release_date?: string,
-    genres: Array<number>,
+    genres?: Array<number>,
     genreIds?: Array<number>,
     genre_ids?: Array<number>,
     title: string,
@@ -17,9 +17,30 @@ export interface Movie {
     view: boolean
 }
 
+export interface PopularMovies {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface PopularMoviesRes {
+    results: Array<PopularMovies>
+}
+
 export interface MovieDTO {
     id: number,
-    genreSet: Array<string>,
+    genreSet?: Array<string>,
     originalLanguage: string,
     originalTitle: string,
     title: string,
@@ -37,7 +58,20 @@ export interface UserMovieDTO {
     movieDTO: MovieDTO
 }
 
-export interface SeeMovie {
+export interface DataMovieUSer {
     username: string,
-    userMovieDTOList: UserMovieDTO,
+    userMovieDTOList: Array<UserMovieDTO>
+}
+
+export interface SeeMovie {
+    id: number,
+    addedDate: string,
+    rating: number,
+    movieDTO: MovieDTO
+}
+
+export interface UserMovieData {
+  username: string,
+  movie: MovieDTO,
+  rating: number;
 }

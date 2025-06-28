@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react"
 import getMoviesUser from "../services/getMoviesUser"
 import { ViewMovies } from "../components/ViewMovies";
-import { Box, Button, Flex, Grid, Skeleton, Text } from "@radix-ui/themes";
-import type { User } from "../interfaces/user";
-import type { SeeMovie } from "../interfaces/movie";
+import { Box, Button, Flex, Grid, Heading, Skeleton, Text } from "@radix-ui/themes";
+import type { User, UserDataLocalStorage } from "../interfaces/user";
+import type { DataMovieUSer, SeeMovie, UserMovieDTO } from "../interfaces/movie";
 
 interface PelículasVistasPageProps {
-    user: User,
+    user: User | null,
     seeMovies: Array<SeeMovie>,
-    setSeeMovies: Array<SeeMovie>
+    setSeeMovies:  React.Dispatch<React.SetStateAction<Array<SeeMovie>>>
 }
+
 export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: PelículasVistasPageProps) => {
 
-    const [dataMoviesUser, setDataMoviesUser] = useState([]);
+    const [dataMoviesUser, setDataMoviesUser] = useState<DataMovieUSer | null>(null);
 
     useEffect(() => {
-        let userData = window.localStorage.getItem("userData")
-        if (userData == null) return
-        userData = JSON.parse(userData)
+        const userDataString: string | null = window.localStorage.getItem("userData")
+        if (userDataString == null) return
+        const userData: UserDataLocalStorage = JSON.parse(userDataString)
 
         const fectMoviesUSer = async () => {
             try {
@@ -43,7 +44,7 @@ export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: Película
 
     }, [])
 
-    const movies = dataMoviesUser.userMovieDTOList && dataMoviesUser.userMovieDTOList.map(item => {
+    const movies =  dataMoviesUser?.userMovieDTOList.map((item: UserMovieDTO) => {
         return item.movieDTO
     })
 
@@ -85,6 +86,11 @@ export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: Película
                             </Box>
                         ))}
                 </Grid>
+            }
+
+            {
+                movies && movies.length == 0 &&
+                <Heading>🎬 Aún no has marcado películas como vistas. ¡Explora y márcalas!</Heading>
             }
         </Flex>
     )

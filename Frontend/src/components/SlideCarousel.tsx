@@ -1,11 +1,16 @@
 import { Box, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes"
 import { genres } from "../util/genres";
 import { ImdbIcon } from "./icons/ImdbIcon";
+import type { PopularMovies } from "../interfaces/movie";
 
 const UR_LIMG = import.meta.env.VITE_THE_MOVIE_DB_URL_IMG;
 const URL_IMG_NOT_FOUND = import.meta.env.VITE_IMG_NOT_FOUND_URL
 
-export const SlideCarousel = ({ movie }) => {
+interface SlideCarouselProps {
+    movie: PopularMovies
+}
+
+export const SlideCarousel = ({ movie }: SlideCarouselProps) => {
 
     return (
         <Box flexGrow="1" >
@@ -28,7 +33,7 @@ export const SlideCarousel = ({ movie }) => {
                             <Box p="5">
                                 <Flex direction="row" justify="between">
                                     <Text>{
-                                        movie.genre_ids.map(id => <Text
+                                        movie.genre_ids.map((id: number) => <Text
                                             key={id}
                                             as="span"
                                             mr="2">

@@ -4,8 +4,14 @@ import { SlideCarousel } from "./SlideCarousel"
 import { useCallback } from "react"
 import { Button, Flex, Heading } from "@radix-ui/themes"
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
+import type { PopularMovies } from "../interfaces/movie"
 
-export const Carousel = ({ popularMovies, title }) => {
+interface CarouselProps {
+    popularMovies: Array<PopularMovies>,
+    title: string,
+}
+
+export const Carousel = ({ popularMovies, title }: CarouselProps) => {
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { loop: false },

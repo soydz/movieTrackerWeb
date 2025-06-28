@@ -1,11 +1,20 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Box, Button, Dialog, Flex, Grid, Heading, Text } from "@radix-ui/themes"
 import { genres } from "../util/genres";
+import type { User } from "../interfaces/user";
+import type { Movie } from "../interfaces/movie";
 
 const URL_IMG = import.meta.env.VITE_THE_MOVIE_DB_URL_IMG;
 const URL_IMG_NOT_FOUND = import.meta.env.VITE_IMG_NOT_FOUND_URL
 
-export const CardMovieFull = ({ user, movie, isView, handleClick }) => {
+interface CardMovieProps {
+    user: User | null,
+    movie: Movie,
+    isView: boolean,
+    handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+ }
+
+export const CardMovieFull = ({ user, movie, isView, handleClick }: CardMovieProps) => {
     return (
         <Grid columns="2fr 3fr" width="100%">
             <Box>
@@ -25,7 +34,7 @@ export const CardMovieFull = ({ user, movie, isView, handleClick }) => {
                 <Flex justify="end">
                     <Dialog.Title>
                         <Dialog.Close>
-                            <Button color="red">
+                            <Button color="gray" variant="outline">
                                 <Flex gap="1" align="center">
                                     <Cross1Icon width="16" height="16" />
                                     <Text as="p" size="2">Cerrar</Text>
@@ -40,7 +49,7 @@ export const CardMovieFull = ({ user, movie, isView, handleClick }) => {
                 <Box py="4">
                     <Flex direction="row" justify="between">
                         <Text>{
-                            movie.genres.map(id => <Text
+                            movie.genres && movie.genres.map(id => <Text
                                 key={id}
                                 as="span"
                                 mr="2">

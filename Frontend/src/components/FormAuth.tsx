@@ -1,11 +1,17 @@
 import { Box, Button, Card, Flex, Heading, Text, TextField } from "@radix-ui/themes";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import type { DataUser } from "../interfaces/user";
 
-export const FormAuth = ({ type, onSubmit }) => {
+interface FormAuthProps<T> {
+    type: "login" | "signup",
+    onSubmit: (data: T) => void | Promise<void>
+}
+
+export const FormAuth = <T,>({ type, onSubmit }: FormAuthProps<T>) => {
     const isLogin = type == "login"
 
-    const [dataUser, setDataUser] = useState({
+    const [dataUser, setDataUser] = useState<DataUser>({
         username: "",
         email: "",
         password: "",
@@ -50,7 +56,7 @@ export const FormAuth = ({ type, onSubmit }) => {
             }
         }
 
-        onSubmit(dataUser);
+        onSubmit(dataUser as unknown as T);
 
         setDataUser({
             username: "",

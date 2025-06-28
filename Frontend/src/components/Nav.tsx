@@ -1,9 +1,14 @@
 import { EyeOpenIcon, MagnifyingGlassIcon, PersonIcon } from "@radix-ui/react-icons";
-import { Box, Container, Flex, TabNav, Tabs, Text } from "@radix-ui/themes";
+import { Box, Container, Flex, Tabs, Text } from "@radix-ui/themes";
 import { MovieIcon } from "./icons/MovieIcon";
 import { Link } from "react-router-dom";
+import type { User } from "../interfaces/user";
 
-export const Nav = ({ user }) => {
+interface NavProps {
+    user: User | null
+}
+
+export const Nav = ({ user }: NavProps) => {
 
     const logueado = user == null ? false : true;
 
@@ -31,7 +36,7 @@ export const Nav = ({ user }) => {
                         {logueado &&
                             <>
                                 <Tabs.Trigger value="Peliculas vistas" >
-                                    <Link to={`user/${user.username}/vistas`} style={{ textDecoration: "none", color: "inherit" }} >
+                                    <Link to={`user/${user?.username ?? ""}/vistas`} style={{ textDecoration: "none", color: "inherit" }} >
                                         <Box >
                                             <Flex align="center" gap="1" p="2" width="100%">
                                                 <EyeOpenIcon width={'20'} height={'20'} />
@@ -42,7 +47,7 @@ export const Nav = ({ user }) => {
                                 </Tabs.Trigger>
 
                                 <Tabs.Trigger value="Mi perfil">
-                                    <Link to={`/user/${user.username}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                    <Link to={`/user/${user?.username ?? ""}`} style={{ textDecoration: "none", color: "inherit" }}>
                                         <Flex align="center" gap="1" p="2">
                                             <PersonIcon width={'20'} height={'20'} />
                                             <Text size={'3'}>Mi perfil</Text>

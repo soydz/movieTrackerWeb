@@ -4,35 +4,40 @@ import normalizeMovie from "../util/normalizeMovie";
 import deleteUserMovieService from "../services/deleteUserMovieService";
 import { CardMovieFull } from "./CardMovieFull";
 import { useEffect, useState } from "react";
+import type { Movie, SeeMovie, UserMovieData } from "../interfaces/movie";
+import type { User } from "../interfaces/user";
 
 const URL_IMG = import.meta.env.VITE_THE_MOVIE_DB_URL_IMG;
 const URL_IMG_NOT_FOUND = import.meta.env.VITE_IMG_NOT_FOUND_URL
 
-export const CardMovie = ({ movie, user, seeMovies, setSeeMovies }) => {
+interface CardMovieProps {
+    movie: Movie,
+    user: User | null,
+    seeMovies: Array<SeeMovie>,
+    setSeeMovies: React.Dispatch<React.SetStateAction<Array<SeeMovie>>>
+}
 
-    const [isView, setIsView] = useState(() => {
-        seeMovies.some(item => item.movieDTO.id == movie.id)
-    })
+export const CardMovie = ({ movie, user, seeMovies, setSeeMovies }: CardMovieProps) => {
+
+    const [isView, setIsView] = useState(false);
 
     useEffect(() => {
-        if (seeMovies.length > 0) {
-            const isView = seeMovies.some(item => item.movieDTO.id == movie.id);
-            setIsView(isView);
-        } else {
-            setIsView(false);
-        }
+        const seen = seeMovies.some(item => item.movieDTO.id === movie.id);
+        setIsView(seen);
     }, [seeMovies, movie.id]);
-
+    
 
     const normalizedMovie = normalizeMovie(movie)
 
-    const fectchUserMovie = async (userMovieData) => {
-        let token = window.localStorage.getItem("userData")
-        if (token == null) return
-        token = JSON.parse(token)
+    const fectchUserMovie = async (userMovieData: UserMovieData) => {
+        const userLocalData = window.localStorage.getItem("userData")
+        if (userLocalData == null) return
+        const userLocalDataObj = JSON.parse(userLocalData)
+
+        if (!userLocalDataObj.jwt) return
 
         try {
-            const response = await postUserMovie(userMovieData, token.jwt);
+            const response = await postUserMovie(userMovieData, userLocalDataObj?.jwt);
             const data = await response.json()
 
             setSeeMovies(prev => [...prev, data])
@@ -44,42 +49,57 @@ export const CardMovie = ({ movie, user, seeMovies, setSeeMovies }) => {
         }
     }
 
-    const handleClick = (e) => {
-        const data = e.nativeEvent.target;
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const data = e.currentTarget;
+
+        //console.log(seeMovies)
+        //console.log(data)
 
         if (data && data.name == "vista") {
 
             if (isView) {
-                setIsView(false);
-                const idUserMovie = seeMovies.find(item => item.movieDTO.id == data.id).id
-                const storageUser = window.localStorage.getItem("userData")
-                const token = JSON.parse(storageUser).jwt;
+                setIsView(false)
 
-                const newSeeMovies = seeMovies.filter(item => item.movieDTO.id != data.id)
+                const userMovie = seeMovies.find(item => item.movieDTO.id == parseInt(data.id))
+                const idUserMovie = userMovie?.id;
+                const storageUser = window.localStorage.getItem("userData")
+
+                let token;
+                if (storageUser) {
+                    token = JSON.parse(storageUser).jwt;
+                }
+
+                const newSeeMovies = seeMovies.filter(item => item.movieDTO.id != parseInt(data.id))
                 setSeeMovies(newSeeMovies)
 
-                deleteUserMovieService(token, idUserMovie)
+                if (token && idUserMovie) {
+                    deleteUserMovieService(token, idUserMovie)
+                }
                 return
             }
 
             setIsView(true)
-            const userMovieData = {
-                username: user.username,
-                rating: 6,
-                movie: {
-                    id: movie.id,
-                    posterPath: movie.poster_path,
-                    overview: movie.overview,
-                    releaseDate: movie.release_date,
-                    genres: movie.genre_ids,
-                    title: movie.title,
-                    originalTitle: movie.original_title,
-                    originalLanguage: movie.original_language,
-                    runtime: 0,
-                    view: true
+            let userMovieData;
+
+            if (user?.username !== undefined) {
+                userMovieData = {
+                    username: user.username,
+                    rating: 6,
+                    movie: {
+                        id: movie.id,
+                        posterPath: movie.poster_path ?? URL_IMG_NOT_FOUND,
+                        overview: movie.overview,
+                        releaseDate: movie.release_date ?? "",
+                        genreSet: movie.genre_ids?.map(String),
+                        title: movie.title,
+                        originalTitle: movie.original_title ?? "",
+                        originalLanguage: movie.original_language ?? "",
+                        runtime: 0,
+                        view: true
+                    }
                 }
+                fectchUserMovie(userMovieData);
             }
-            fectchUserMovie(userMovieData);
         }
     }
     return (
@@ -122,12 +142,12 @@ export const CardMovie = ({ movie, user, seeMovies, setSeeMovies }) => {
                                 <Button
                                     name="vista"
                                     id={
-                                        normalizedMovie.id
+                                        normalizedMovie.id.toString()
                                     }
-                                    color={isView && "red"}
+                                    color={isView ? "red" : undefined}
                                     onClick={(e) => handleClick(e)}
                                 >
-                                    {isView && isView ? "Eliminar" : "Marcar como vista"}
+                                    {isView ? "Eliminar" : "Marcar como vista"}
                                 </Button>
                             }
                             <Dialog.Root>
