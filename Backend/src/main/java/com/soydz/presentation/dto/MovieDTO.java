@@ -7,14 +7,15 @@ import java.util.Set;
 
 public record MovieDTO(
         Long id,
-        Set<String> genreSet,
+        Set<String> genres,
         String originalLanguage,
         String originalTitle,
         String title,
         String overview,
         String posterPath,
         LocalDate releaseDate,
-        Integer runtime
+        Integer runtime,
+        Boolean view
 ) {
     public static MovieDTO fromEntity(MovieEntity movie) {
 
@@ -27,7 +28,8 @@ public record MovieDTO(
                 movie.getOverview(),
                 movie.getPosterPath(),
                 movie.getReleaseDate(),
-                movie.getRuntime()
+                movie.getRuntime(),
+                true
         );
     }
 
@@ -35,7 +37,7 @@ public record MovieDTO(
         MovieEntity movieEntity = new MovieEntity();
 
         movieEntity.setId(movieDTO.id());
-        movieEntity.setGenreSet(movieDTO.genreSet());
+        movieEntity.setGenreSet(movieDTO.genres());
         movieEntity.setOriginalLanguage(movieDTO.originalLanguage());
         movieEntity.setOriginalTitle(movieDTO.originalTitle());
         movieEntity.setTitle(movieDTO.title());

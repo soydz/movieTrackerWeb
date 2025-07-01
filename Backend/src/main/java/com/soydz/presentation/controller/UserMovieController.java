@@ -1,14 +1,12 @@
 package com.soydz.presentation.controller;
 
-import com.soydz.presentation.dto.response.UserMovieResponseDetailsDTO;
+import com.soydz.presentation.dto.UserMovieDTO;
+import com.soydz.presentation.dto.response.UserMovieResponseDTO2;
 import com.soydz.presentation.dto.request.UserMovieRequestDTO;
-import com.soydz.presentation.dto.response.UserMovieResponseDTO;
 import com.soydz.service.interfaces.UserMovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/user-movie")
@@ -21,21 +19,14 @@ public class UserMovieController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<UserMovieResponseDTO> save(@RequestBody UserMovieRequestDTO userMovieRequestDTO) {
-        UserMovieResponseDTO userMovieResponseDTO = userMovieService.save(userMovieRequestDTO);
-
-        return new ResponseEntity<>(userMovieResponseDTO, HttpStatus.CREATED);
+    public ResponseEntity<UserMovieDTO> save(@RequestBody UserMovieRequestDTO userMovieRequestDTO) {
+        UserMovieDTO userMovieDTO = userMovieService.save(userMovieRequestDTO);
+        return new ResponseEntity<>(userMovieDTO, HttpStatus.CREATED);
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<UserMovieResponseDTO> getById(@PathVariable("id") Long id) {
-        return userMovieService.getById(id)
-                .map(userMovie -> new ResponseEntity<>(userMovie, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    @GetMapping("/find/user/{id}")
-    public ResponseEntity<List<UserMovieResponseDetailsDTO>> getByUserId(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(userMovieService.getByUserId(id), HttpStatus.OK);
+    @GetMapping("/find/{username}")
+    public ResponseEntity<UserMovieResponseDTO2> getByUserId(@PathVariable("username") String username) {
+        return new ResponseEntity<>(userMovieService.getByUsername(username), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
