@@ -11,7 +11,7 @@ public record UserMovieRequestDTO(
         Long id,
         Integer rating,
         LocalDate addedDate,
-        Long user,
+        String username,
         MovieDTO movie
 ) {
     public static UserMovieEntity toEntity(UserMovieRequestDTO userMovieRequestDTO, UserEntity user, MovieEntity movie) {

@@ -35,7 +35,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-
         UserEntity userEntity = userService.findUserEntityByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("The user " + username + " not found"));
 
@@ -85,7 +84,11 @@ public class UserDetailServiceImpl implements UserDetailsService {
         String accessToken = jwtUtils.createToken(authentication);
 
         return new AuthResponseDTO(
-                userCreated.getUsername(), "User created successfully", accessToken, true
+                userCreated.getId(),
+                userCreated.getUsername(),
+                "User created successfully",
+                accessToken,
+                true
         );
     }
 
@@ -107,6 +110,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
         String username = userRequestDTO.username();
         String password = userRequestDTO.password();
 
+        UserEntity userEntity = userService.findUserEntityByUsername(username).orElseThrow();
+
+        Long userId = userEntity.getId();
+
         Authentication authentication = this.authentication(username, password);
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -114,6 +121,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         String accessToken = jwtUtils.createToken(authentication);
 
         return new AuthResponseDTO(
+                userId,
                 username,
                 "User logged successfuly",
                 accessToken,

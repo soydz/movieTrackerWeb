@@ -31,7 +31,7 @@ public class ValidationUtils {
     }
 
     public static boolean isInvalidUserMovieRequestData(UserMovieRequestDTO userMovieRequestDTO) {
-        return userMovieRequestDTO.user() == null ||
+        return userMovieRequestDTO.username() == null ||
                 userMovieRequestDTO.rating() == null ||
                 isNullOrBlank(userMovieRequestDTO.movie().title()) ||
                 isNullOrBlank(userMovieRequestDTO.movie().originalTitle()) ||
