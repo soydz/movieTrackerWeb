@@ -1,7 +1,7 @@
 package com.soydz.service.interfaces;
 
 import com.soydz.persistence.entity.UserEntity;
-import com.soydz.presentation.dto.request.UserRequestDTO;
+import com.soydz.presentation.dto.request.AuthSignupDTO;
 import com.soydz.presentation.dto.response.UserResponseDTO;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserService {
     Optional<UserEntity> findUserEntityByUsername(String username);
 
-    UserEntity save(UserRequestDTO user);
+    UserEntity save(AuthSignupDTO user);
 
     List<UserResponseDTO> getAll();
 

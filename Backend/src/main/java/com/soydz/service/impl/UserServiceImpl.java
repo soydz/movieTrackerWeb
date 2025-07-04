@@ -3,6 +3,8 @@ package com.soydz.service.impl;
 import com.soydz.persistence.entity.RoleEntity;
 import com.soydz.persistence.entity.UserEntity;
 import com.soydz.persistence.repository.UserRepository;
+import com.soydz.presentation.dto.request.AuthLoginDTO;
+import com.soydz.presentation.dto.request.AuthSignupDTO;
 import com.soydz.presentation.dto.request.UserRequestDTO;
 import com.soydz.presentation.dto.response.UserResponseDTO;
 import com.soydz.service.interfaces.RoleService;
@@ -30,21 +32,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity save(UserRequestDTO userRequestDTO) {
-        if (ValidationUtils.isInvalidCreateUserData(userRequestDTO)) {
-            throw new IllegalArgumentException("Invalid user data: username, email, password and roles must not be null or empty");
+    public UserEntity save(AuthSignupDTO signupDTO) {
+        if (ValidationUtils.isInvalidCreateUserData(signupDTO)) {
+            throw new IllegalArgumentException("Invalid user data: username and password must not be null or empty");
         }
 
-        userRepository.findUserEntityByUsername(userRequestDTO.username()).ifPresent(
+        userRepository.findUserEntityByUsername(signupDTO.username()).ifPresent(
                 userEntity -> {
                     throw new IllegalArgumentException("Username is already in use");
                 }
         );
 
-        Set<RoleEntity> roleEntitySet = roleService.findRoleEntitiesByRoleNameIn(userRequestDTO.roleSet()).stream().collect(Collectors.toSet());
-        String encryptedPassword = passwordEncoder.encode(userRequestDTO.password());
+        Set<RoleEntity> roleEntitySet = roleService.findRoleEntitiesByRoleNameIn(signupDTO.roleSet()).stream().collect(Collectors.toSet());
+        String encryptedPassword = passwordEncoder.encode(signupDTO.password());
 
-        UserEntity userEntity = UserRequestDTO.toEntity(userRequestDTO, encryptedPassword, roleEntitySet);
+        UserEntity userEntity = AuthSignupDTO.toEntity(signupDTO, encryptedPassword, roleEntitySet);
 
         return userRepository.save(userEntity);
     }

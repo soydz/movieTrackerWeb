@@ -1,6 +1,8 @@
 package com.soydz.service.impl;
 
 import com.soydz.persistence.entity.UserEntity;
+import com.soydz.presentation.dto.request.AuthLoginDTO;
+import com.soydz.presentation.dto.request.AuthSignupDTO;
 import com.soydz.presentation.dto.request.UserRequestDTO;
 import com.soydz.presentation.dto.response.AuthResponseDTO;
 import com.soydz.util.JwtUtils;
@@ -63,8 +65,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
         );
     }
 
-    public AuthResponseDTO createUser(UserRequestDTO userRequestDTO) {
-        UserEntity userCreated = userService.save(userRequestDTO);
+    public AuthResponseDTO createUser(AuthSignupDTO authSignupDTO) {
+        UserEntity userCreated = userService.save(authSignupDTO);
 
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
 
@@ -106,9 +108,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
         return new UsernamePasswordAuthenticationToken(username, userDetails.getPassword(), userDetails.getAuthorities());
     }
 
-    public AuthResponseDTO loginUser(UserRequestDTO userRequestDTO) {
-        String username = userRequestDTO.username();
-        String password = userRequestDTO.password();
+    public AuthResponseDTO loginUser(AuthLoginDTO loginDTO) {
+        String username = loginDTO.username();
+        String password = loginDTO.password();
 
         UserEntity userEntity = userService.findUserEntityByUsername(username).orElseThrow();
 

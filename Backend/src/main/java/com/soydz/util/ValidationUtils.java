@@ -1,6 +1,8 @@
 package com.soydz.util;
 
 import com.soydz.persistence.entity.MovieEntity;
+import com.soydz.presentation.dto.request.AuthLoginDTO;
+import com.soydz.presentation.dto.request.AuthSignupDTO;
 import com.soydz.presentation.dto.request.UserRequestDTO;
 import com.soydz.presentation.dto.request.UserMovieRequestDTO;
 
@@ -23,11 +25,16 @@ public class ValidationUtils {
                 isNullOrBlank(movie.getOverview());
     }
 
-    public static boolean isInvalidCreateUserData(UserRequestDTO userRequestDTO) {
-        return isNullOrBlank(userRequestDTO.username()) ||
-                isNullOrBlank(userRequestDTO.email()) ||
-                isNullOrBlank(userRequestDTO.password()) ||
-                isNullOrEmpty(userRequestDTO.roleSet());
+    public static boolean isInvalidLoginUserData(AuthLoginDTO login) {
+        return isNullOrBlank(login.username()) ||
+                isNullOrBlank(login.password());
+    }
+
+    public static boolean isInvalidCreateUserData(AuthSignupDTO signupDTO) {
+        return isNullOrBlank(signupDTO.username()) ||
+                isNullOrBlank(signupDTO.email()) ||
+                isNullOrBlank(signupDTO.password()) ||
+                isNullOrEmpty(signupDTO.roleSet());
     }
 
     public static boolean isInvalidUserMovieRequestData(UserMovieRequestDTO userMovieRequestDTO) {
