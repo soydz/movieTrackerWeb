@@ -1,6 +1,7 @@
 package com.soydz.presentation.controller;
 
-import com.soydz.presentation.dto.request.UserRequestDTO;
+import com.soydz.presentation.dto.request.AuthLoginDTO;
+import com.soydz.presentation.dto.request.AuthSignupDTO;
 import com.soydz.presentation.dto.response.AuthResponseDTO;
 import com.soydz.service.impl.UserDetailServiceImpl;
 import org.springframework.http.HttpStatus;
@@ -21,12 +22,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<AuthResponseDTO> register(@RequestBody UserRequestDTO userRequestDTO) {
-        return new ResponseEntity<>(this.userDetailService.createUser(userRequestDTO), HttpStatus.CREATED);
+    public ResponseEntity<AuthResponseDTO> register(@RequestBody AuthSignupDTO authSignupDTO) {
+        return new ResponseEntity<>(this.userDetailService.createUser(authSignupDTO), HttpStatus.CREATED);
     }
 
     @PostMapping("/log-in")
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody UserRequestDTO userRequestDTO) {
-        return new ResponseEntity<>(this.userDetailService.loginUser(userRequestDTO), HttpStatus.OK);
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody AuthLoginDTO loginDTO) {
+        return new ResponseEntity<>(this.userDetailService.loginUser(loginDTO), HttpStatus.OK);
     }
 }

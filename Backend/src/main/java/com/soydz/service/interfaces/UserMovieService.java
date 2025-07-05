@@ -1,5 +1,7 @@
 package com.soydz.service.interfaces;
 
+import com.soydz.presentation.dto.UserMovieDTO;
+import com.soydz.presentation.dto.response.UserMovieResponseDTO2;
 import com.soydz.presentation.dto.response.UserMovieResponseDetailsDTO;
 import com.soydz.presentation.dto.request.UserMovieRequestDTO;
 import com.soydz.presentation.dto.response.UserMovieResponseDTO;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserMovieService {
-    UserMovieResponseDTO save(UserMovieRequestDTO userMovieEntity);
+    UserMovieDTO save(UserMovieRequestDTO userMovieEntity);
 
     Optional<UserMovieResponseDTO> getById(Long id);
 
@@ -16,5 +18,5 @@ public interface UserMovieService {
 
     boolean existByUserMovie(Long userId, Long movieId);
 
-    List<UserMovieResponseDetailsDTO> getByUserId(Long id);
+    UserMovieResponseDTO2 getByUsername(String username);
 }

@@ -1,0 +1,40 @@
+services:
+  movie-traker-api:
+    image: movie-tracker-api
+    container_name: movie-tracker-api-container
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SECURITY_JWT_KEY_PRIVATE: ${SECURITY_JWT_KEY_PRIVATE}
+      SECURITY_JWT_USER_GENERATOR: ${SECURITY_JWT_USER_GENERATOR}
+      SECURITY_JWT_TOKEN_EXPIRATION: ${SECURITY_JWT_TOKEN_EXPIRATION}
+    build:
+      context: ./Backend/.
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-network
+    depends_on:
+      - movie-tracker-db
+
+  movie-tracker-db:
+    image: postgres
+    container_name: movie-tracker-db-container
+    environment:
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      POSTGRES_DB: ${SPRING_DATASOURCE_DB}
+
+    ports:
+      - "5432:5432"
+    networks:
+      - spring-network
+    volumes:
+      - postgres-volume:/var/lib/postgresql/19/docker
+
+networks:
+  spring-network:
+volumes:
+  postgres-volume:

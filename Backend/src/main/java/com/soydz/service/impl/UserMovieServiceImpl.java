@@ -5,11 +5,10 @@ import com.soydz.persistence.entity.UserEntity;
 import com.soydz.persistence.entity.UserMovieEntity;
 import com.soydz.persistence.repository.UserMovieRepository;
 import com.soydz.presentation.dto.MovieDTO;
+import com.soydz.presentation.dto.UserMovieDTO;
 import com.soydz.presentation.dto.request.UserMovieRequestDTO;
-import com.soydz.presentation.dto.response.UserMovieResponseDTO;
-import com.soydz.presentation.dto.response.UserMovieResponseDetailsDTO;
-import com.soydz.presentation.dto.response.UserResponseDTO;
-import com.soydz.presentation.dto.response.UserResponseMinimalDTO;
+
+import com.soydz.presentation.dto.response.*;
 import com.soydz.service.interfaces.MovieService;
 import com.soydz.service.interfaces.UserMovieService;
 import com.soydz.service.interfaces.UserService;
@@ -17,9 +16,9 @@ import com.soydz.util.ValidationUtils;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserMovieServiceImpl implements UserMovieService {
@@ -35,7 +34,7 @@ public class UserMovieServiceImpl implements UserMovieService {
     }
 
     @Override
-    public UserMovieResponseDTO save(UserMovieRequestDTO userMovieRequestDTO) {
+    public UserMovieDTO save(UserMovieRequestDTO userMovieRequestDTO) {
         if(userMovieRequestDTO.movie().id() == null) {
             throw new IllegalArgumentException("Invalid userMovie data: movie id must not be null");
         }
@@ -49,23 +48,22 @@ public class UserMovieServiceImpl implements UserMovieService {
             movieService.save(userMovieRequestDTO.movie());
         }
 
-        if (!userService.existsById(userMovieRequestDTO.user())) {
-            throw new UsernameNotFoundException("User not found");
-        }
+        UserEntity user = userService.findUserEntityByUsername(userMovieRequestDTO.username()).orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        if (this.existByUserMovie(userMovieRequestDTO.user(), userMovieRequestDTO.movie().id())) {
+        if (this.existByUserMovie(user.getId(), userMovieRequestDTO.movie().id())) {
             throw new IllegalArgumentException("Duplicate entry: this movie has already been submitted by the user");
         }
 
-        UserResponseDTO userResponseDTO = userService.getById(userMovieRequestDTO.user())
+        UserResponseDTO userResponseDTO = userService.getById(user.getId())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
         UserEntity userEntity = UserResponseDTO.toEntity(userResponseDTO);
         MovieEntity movieEntity = MovieDTO.toEntity(userMovieRequestDTO.movie());
 
         UserMovieEntity userMovieEntity = UserMovieRequestDTO.toEntity(userMovieRequestDTO, userEntity, movieEntity);
+        UserMovieEntity userMovieEntityUpdate = userMovieRepository.save(userMovieEntity);
 
-        return UserMovieResponseDTO.fromEntity(userMovieRepository.save(userMovieEntity));
+        return UserMovieDTO.fromEntity(userMovieEntityUpdate, userMovieRequestDTO.movie());
     }
 
     @Override
@@ -85,21 +83,19 @@ public class UserMovieServiceImpl implements UserMovieService {
     }
 
     @Override
-    public List<UserMovieResponseDetailsDTO> getByUserId(Long id) {
-        List<UserMovieEntity> userMovieEntity = userMovieRepository.findByUserId(id);
+    public UserMovieResponseDTO2 getByUsername(String username) {
+        UserEntity userEntity = userService.findUserEntityByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        UserResponseMinimalDTO userResponseMinimalDTO = userMovieEntity.stream()
-                .findFirst()
-                .map(userMovie -> UserResponseMinimalDTO.fromEntity(userMovie.getUser()))
-                .orElseThrow(() -> new UsernameNotFoundException("user not found"));
+        List<UserMovieEntity> userMovieEntityList = userMovieRepository.findByUserId(userEntity.getId());
 
-        MovieDTO movieDTO = userMovieEntity.stream()
-                .findFirst()
-                .map(userMovie -> MovieDTO.fromEntity(userMovie.getMovie()))
-                .orElseThrow(() -> new UsernameNotFoundException("user not found"));
+        List<UserMovieDTO> userMovieDTOList = userMovieEntityList.stream()
+                .map( item -> new UserMovieDTO(
+                        item.getId(),
+                        item.getRating(),
+                        item.getAddedDate(),
+                        MovieDTO.fromEntity(item.getMovie())
+                )).collect(Collectors.toList());
 
-        return userMovieEntity.stream()
-                .map(userMovie -> UserMovieResponseDetailsDTO.fromEntity(userMovie, userResponseMinimalDTO, movieDTO))
-                .toList();
+        return new UserMovieResponseDTO2(username, userMovieDTOList);
     }
 }
