@@ -8,6 +8,8 @@ interface MiPerfilPageProps {
 }
 
 export const MiPerfilPage = ({ user, seeMovies }: MiPerfilPageProps) => {
+
+    if (!user) return null
     return (
         <Flex align="center" justify="center" height="100%">
 

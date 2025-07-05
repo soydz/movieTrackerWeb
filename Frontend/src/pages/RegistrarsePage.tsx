@@ -5,12 +5,18 @@ import { useNavigate } from "react-router-dom";
 import type { Signup } from "../interfaces/auth";
 import type { SetUser } from "../interfaces/user";
 import { useState } from "react";
+import { Alert } from "../components/Alert";
 
 export const RegistrarsePage = ({ setUser }: SetUser) => {
 
     const navigate = useNavigate();
 
     const [fetchSignup, setFetchSignup] = useState<boolean>(false);
+    const [stateAlert, setStateAlert] = useState({
+        status: false,
+        title: "",
+        description: ""
+    })
 
     const handleSubmit = async (signup: Signup) => {
 
@@ -43,20 +49,31 @@ export const RegistrarsePage = ({ setUser }: SetUser) => {
 
         } catch (error: unknown) {
             if (error instanceof Error) {
-                console.error(error.message)
+                setStateAlert({
+                    status: true,
+                    title: "Error de servidor",
+                    description: `${error.message} Inténtelo más tarde`
+                })
+                setFetchSignup(false)
             }
         }
     }
 
     return (
-        <Flex direction="column" justify="center" align="center" style={{ height: "calc(100vh - 270px)" }}>
+        <>
+            <Flex direction="column" justify="center" align="center" style={{ height: "calc(100vh - 270px)" }}>
+                {
+                    !fetchSignup
+                        ? <FormAuth<Signup> type="signup" onSubmit={handleSubmit} />
+                        : <Box style={{ transform: 'scale(2)' }}>
+                            <Spinner size="3" loading={true} />
+                        </Box>
+                }
+            </Flex>
+
             {
-                !fetchSignup
-                    ? <FormAuth<Signup> type="signup" onSubmit={handleSubmit} />
-                    : <Box style={{ transform: 'scale(2)' }}>
-                        <Spinner size="3" loading={true} />
-                    </Box>
+                <Alert status={stateAlert.status} title={stateAlert.title} description={stateAlert.description} setStateAlert={setStateAlert} />
             }
-        </Flex>
+        </>
     )
 }

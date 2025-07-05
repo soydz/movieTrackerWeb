@@ -10,7 +10,7 @@ interface NavProps {
 
 export const Nav = ({ user }: NavProps) => {
 
-    const logueado = user == null ? false : true;
+    const logueado = !!user
 
     return (
         <Container style={{ borderRight: "1px solid gray" }} height="100vh">
@@ -33,7 +33,7 @@ export const Nav = ({ user }: NavProps) => {
                                 </Flex>
                             </Link>
                         </Tabs.Trigger>
-                        {logueado &&
+                        {logueado && user.username &&
                             <>
                                 <Tabs.Trigger value="Peliculas vistas" >
                                     <Link to={`user/${user?.username ?? ""}/vistas`} style={{ textDecoration: "none", color: "inherit" }} >

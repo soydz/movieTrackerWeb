@@ -2,6 +2,7 @@ import { Box, Button, Card, Flex, Heading, Text, TextField } from "@radix-ui/the
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import type { DataUser } from "../interfaces/user";
+import { Alert } from "./Alert";
 
 interface FormAuthProps<T> {
     type: "login" | "signup",
@@ -17,6 +18,11 @@ export const FormAuth = <T,>({ type, onSubmit }: FormAuthProps<T>) => {
         password: "",
         confirmPassword: ""
     });
+    const [stateAlert, setStateAlert] = useState({
+        status: false,
+        title: "",
+        description: ""
+    })
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const target = e.target;
@@ -51,8 +57,11 @@ export const FormAuth = <T,>({ type, onSubmit }: FormAuthProps<T>) => {
 
         if (!isLogin) {
             if (dataUser.password !== dataUser.confirmPassword) {
-                alert("Las contraseña no coinciden");
-                return
+                return setStateAlert({
+                    status: true,
+                    title: "Contraseñas no coinciden",
+                    description: "Asegúrate de que ambas contraseñas sean iguales."
+                })
             }
         }
 
@@ -95,7 +104,7 @@ export const FormAuth = <T,>({ type, onSubmit }: FormAuthProps<T>) => {
 
                         <Box>
                             <Text>Contraseña</Text>
-                            <TextField.Root name="password" placeholder="miContraseña" type="password" value={dataUser.password} onChange={(e) => {
+                            <TextField.Root name="password" placeholder="miContraseña" type="password" minLength={6} value={dataUser.password} onChange={(e) => {
                                 handleChange(e);
                             }} required />
                         </Box>
@@ -128,6 +137,10 @@ export const FormAuth = <T,>({ type, onSubmit }: FormAuthProps<T>) => {
                     </Flex>
                 </form>
             </Card>
+
+            {
+                <Alert status={stateAlert.status} title={stateAlert.title} description={stateAlert.description} setStateAlert={setStateAlert} />
+            }
         </Box>
     )
 }

@@ -4,16 +4,24 @@ import { ViewMovies } from "../components/ViewMovies";
 import { Box, Button, Flex, Grid, Heading, Skeleton, Text } from "@radix-ui/themes";
 import type { User, UserDataLocalStorage } from "../interfaces/user";
 import type { DataMovieUSer, SeeMovie, UserMovieDTO } from "../interfaces/movie";
+import { Alert } from "../components/Alert";
 
 interface PelículasVistasPageProps {
     user: User | null,
     seeMovies: Array<SeeMovie>,
-    setSeeMovies:  React.Dispatch<React.SetStateAction<Array<SeeMovie>>>
+    setSeeMovies: React.Dispatch<React.SetStateAction<Array<SeeMovie>>>
 }
 
 export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: PelículasVistasPageProps) => {
 
+    if (!user) return null
+
     const [dataMoviesUser, setDataMoviesUser] = useState<DataMovieUSer | null>(null);
+    const [stateAlert, setStateAlert] = useState({
+        status: false,
+        title: "",
+        description: ""
+    })
 
     useEffect(() => {
         const userDataString: string | null = window.localStorage.getItem("userData")
@@ -35,7 +43,11 @@ export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: Película
 
             } catch (error: unknown) {
                 if (error instanceof Error) {
-                    console.error(error.message)
+                    setStateAlert({
+                        status: true,
+                        title: "Error de servidor",
+                        description: `${error.message} Inténtelo más tarde`
+                    })
                 }
             }
         }
@@ -44,7 +56,7 @@ export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: Película
 
     }, [])
 
-    const movies =  dataMoviesUser?.userMovieDTOList.map((item: UserMovieDTO) => {
+    const movies = dataMoviesUser?.userMovieDTOList.map((item: UserMovieDTO) => {
         return item.movieDTO
     })
 
@@ -91,6 +103,10 @@ export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: Película
             {
                 movies && movies.length == 0 &&
                 <Heading>🎬 Aún no has marcado películas como vistas. ¡Explora y márcalas!</Heading>
+            }
+
+            {
+                <Alert status={stateAlert.status} title={stateAlert.title} description={stateAlert.description} setStateAlert={setStateAlert} />
             }
         </Flex>
     )
