@@ -3,7 +3,7 @@ import getMoviesUser from "../services/getMoviesUser"
 import { ViewMovies } from "../components/ViewMovies";
 import { Box, Button, Flex, Grid, Heading, Skeleton, Text } from "@radix-ui/themes";
 import type { User, UserDataLocalStorage } from "../interfaces/user";
-import type { DataMovieUSer, SeeMovie, UserMovieDTO } from "../interfaces/movie";
+import type { DataMovieUSer, Movie, SeeMovie, UserMovieDTO } from "../interfaces/movie";
 import { Alert } from "../components/Alert";
 
 interface PelículasVistasPageProps {
@@ -60,11 +60,17 @@ export const PeliculasVistasPage = ({ user, seeMovies, setSeeMovies }: Película
         return item.movieDTO
     })
 
+
+    const moviesMapped: Movie[] = (movies ?? []).map((movieDTO) => ({
+        ...movieDTO,
+        genres: movieDTO.genres?.map(Number), // <- aquí convertimos cada "18" a 18
+    }));
+
     return (
         <Flex align="center" justify="center" mt="8">
             {
                 movies && movies.length > 0 &&
-                <ViewMovies movies={movies} user={user} seeMovies={seeMovies} setSeeMovies={setSeeMovies} />
+                <ViewMovies movies={moviesMapped} user={user} seeMovies={seeMovies} setSeeMovies={setSeeMovies} />
             }
 
             {
