@@ -10,7 +10,6 @@ const deleteUserMovieService = async (token: string, userMovieId: number) => {
         }
     }
 
-    console.log(url, options)
     return await fetch(url, options);
 }
 
