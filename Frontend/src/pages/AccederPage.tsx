@@ -57,7 +57,12 @@ export const AccederPage = ({ setUser }: SetUser) => {
 
         } catch (error: unknown) {
             if (error instanceof Error) {
-                console.error(error.message)
+                setStateAlert({
+                    status: true,
+                    title: "Error de servidor",
+                    description: `${error.message} Inténtelo más tarde`
+                })
+                setFetchLogin(false)
             }
         }
     }
@@ -75,7 +80,7 @@ export const AccederPage = ({ setUser }: SetUser) => {
             </Flex>
 
             {
-                <Alert status={stateAlert.status} title={stateAlert.title} description={stateAlert.description} setStateAlert={setStateAlert}/>
+                <Alert status={stateAlert.status} title={stateAlert.title} description={stateAlert.description} setStateAlert={setStateAlert} />
             }
         </>
 

@@ -15,12 +15,18 @@ import type { User } from "./interfaces/user";
 
 import "@radix-ui/themes/styles.css";
 import type { SeeMovie } from "./interfaces/movie";
+import { Alert } from "./components/Alert";
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
 
   const [seeMovies, setSeeMovies] = useState<Array<SeeMovie>>([]);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [stateAlert, setStateAlert] = useState({
+    status: false,
+    title: "",
+    description: ""
+  })
 
   const fechtMoviesUser = async (storageUser: string) => {
     const storageUserObj = JSON.parse(storageUser)
@@ -30,14 +36,21 @@ function App() {
         const response = await getMoviesUser(storageUserObj.username, storageUserObj.jwt);
         const { status } = await response;
 
-        if (status == 403) return
+        if (status == 403 || status == 400) return null
 
         const data = await response.json();
 
         setSeeMovies(data.userMovieDTOList)
 
       } catch (error: unknown) {
-        if (error instanceof Error) console.log(error.message)
+        if (error instanceof Error) {
+          setStateAlert({
+            status: true,
+            title: "Error de servidor",
+            description: `${error.message} Inténtelo más tarde`
+          })
+        }
+
       }
     }
   }
@@ -83,10 +96,18 @@ function App() {
                 <RegistrarsePage setUser={setUser} />
               }></Route>
               <Route path="/buscar" element={<BuscarPeliculasPage user={user} seeMovies={seeMovies} setSeeMovies={setSeeMovies} />}></Route>
-
-              <Route path="/user/:id" element={<MiPerfilPage user={user} seeMovies={seeMovies} />}></Route>
-              <Route path="/user/:id/vistas" element={<PeliculasVistasPage user={user} seeMovies={seeMovies} setSeeMovies={setSeeMovies} />}></Route>
+              {
+                user &&
+                <>
+                  <Route path="/user/:id" element={<MiPerfilPage user={user} seeMovies={seeMovies} />}></Route>
+                  <Route path="/user/:id/vistas" element={<PeliculasVistasPage user={user} seeMovies={seeMovies} setSeeMovies={setSeeMovies} />}></Route>
+                </>
+              }
             </Routes>
+
+            {
+              <Alert status={stateAlert.status} title={stateAlert.title} description={stateAlert.description} setStateAlert={setStateAlert} />
+            }
 
             <Footer />
           </Box>
