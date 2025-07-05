@@ -40,7 +40,7 @@ export interface PopularMoviesRes {
 
 export interface MovieDTO {
     id: number,
-    genreSet?: Array<string>,
+    genres?: Array<string>,
     originalLanguage: string,
     originalTitle: string,
     title: string,

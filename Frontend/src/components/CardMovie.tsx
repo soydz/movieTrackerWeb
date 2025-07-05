@@ -52,9 +52,6 @@ export const CardMovie = ({ movie, user, seeMovies, setSeeMovies }: CardMoviePro
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const data = e.currentTarget;
 
-        //console.log(seeMovies)
-        //console.log(data)
-
         if (data && data.name == "vista") {
 
             if (isView) {
@@ -90,7 +87,7 @@ export const CardMovie = ({ movie, user, seeMovies, setSeeMovies }: CardMoviePro
                         posterPath: movie.poster_path ?? URL_IMG_NOT_FOUND,
                         overview: movie.overview,
                         releaseDate: movie.release_date ?? "",
-                        genreSet: movie.genre_ids?.map(String),
+                        genres: movie.genre_ids?.map(String),
                         title: movie.title,
                         originalTitle: movie.original_title ?? "",
                         originalLanguage: movie.original_language ?? "",
